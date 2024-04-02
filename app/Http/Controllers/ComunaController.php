@@ -34,7 +34,7 @@ class ComunaController extends Controller
         $municipios = DB::table('tb_municipio')
             ->orderBy('muni_nomb')
             ->get();
-        return view('comuna.new', ['municipios ' => $municipios]);
+        return view('comuna.new', ['municipios' => $municipios]);
     }
 
     /**
