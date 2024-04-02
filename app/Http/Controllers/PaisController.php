@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Departamento;
+use App\Models\Pais;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class DepartamentoController extends Controller
+class PaisController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,12 +14,11 @@ class DepartamentoController extends Controller
      */
     public function index()
     {
-        $departamentos = DB::table('tb_departamento')
-            ->join('tb_pais', 'tb_departamento.pais_codi', '=', 'tb_pais.pais_codi')
-            ->select('tb_departamento.*', 'tb_pais.pais_nomb')
-            ->get();
+        $paises = DB::table('tb_pais')
+         ->orderBy('pais_nomb')
+         ->get();
     
-        return view('departamento.index', ['departamentos' => $departamentos]);
+        return view('pais.index', ['paises' => $paises]);
     }
 
     /**
@@ -30,11 +28,7 @@ class DepartamentoController extends Controller
      */
     public function create()
     {
-        $departamentos = DB::table('tb_departamento')
-            ->orderBy('depa_nomb')
-            ->get();
-        
-        return view('departamento.new', ['departamentos' => $departamentos]);
+        //
     }
 
     /**
@@ -45,10 +39,7 @@ class DepartamentoController extends Controller
      */
     public function store(Request $request)
     {
-        $departamentos = DB::table('tb_departamento')
-         ->get();
-    
-        return view('departamento.index', ['departamentos' => $departamentos]);
+        //
     }
 
     /**
@@ -70,9 +61,7 @@ class DepartamentoController extends Controller
      */
     public function edit($id)
     {
-        $departamento = Departamento::find($id);
-        
-        return view('departamento.edit', ['departamento' => $departamento]);
+        //
     }
 
     /**
@@ -84,10 +73,7 @@ class DepartamentoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $departamento = Departamento::find($id);
-        $departamento->update($request->all());
-    
-        return redirect()->route('departamentos.index');
+        //
     }
 
     /**
@@ -98,12 +84,6 @@ class DepartamentoController extends Controller
      */
     public function destroy($id)
     {
-        $departamento = Departamento::find($id);
-        $departamento->delete();
-    
-        $departamentos = DB::table('tb_departamento')
-          ->get();
-    
-        return view('departamento.index', ['departamentos' => $departamentos]);
+        //
     }
 }
