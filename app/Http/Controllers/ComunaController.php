@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comuna;
 use Illuminate\Http\Request;
-use Illuninate\Support\Facades\DB;
+use Illuminate\Support\Facades\DB;
 
 class ComunaController extends Controller
 {
@@ -16,9 +16,9 @@ class ComunaController extends Controller
     public function index()
     {
         // $comunas = Comuna::all();
-        $comunas - DB::table('tb_comuna')
+        $comunas = DB::table('tb_comuna')
            ->join('tb_municipio' , 'tb_comuna.muni_codi', '=' , 'tb_municipio.muni_codi')
-           ->select('tb_comuna' , 'tb_municipio.muni_nomb')
+           ->select('tb_comuna.*' , 'tb_municipio.muni_nomb')
            ->get();
         return view('comuna.index' , ['comunas' => $comunas]);
     }
@@ -30,6 +30,7 @@ class ComunaController extends Controller
      */
     public function create()
     {
+        
         $municipios = DB::table('tb_municipio')
             ->orderBy('muni_nomb')
             ->get();
