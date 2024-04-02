@@ -29,7 +29,7 @@
         <select class="form-select" id="department" name="department_code" required>
             <option selected disabled value="">Choose one...</option>
             @foreach ($departamentos as $departamento)
-                <option value="{{ $departamento->depa_codi }}">{{ $departamento->depa_nomb }}</option>
+                <option value="{{$departamento->depa_codi}}">{{$departamento->depa_nomb}}</option>
             @endforeach
         </select>
         <div class="mt-3">
