@@ -69,7 +69,9 @@ class DepartamentoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $departamento = Departamento::find($id);
+        
+        return view('departamento.edit', ['departamento' => $departamento]);
     }
 
     /**
@@ -81,7 +83,10 @@ class DepartamentoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $departamento = Departamento::find($id);
+        $departamento->update($request->all());
+    
+        return redirect()->route('departamentos.index');
     }
 
     /**
